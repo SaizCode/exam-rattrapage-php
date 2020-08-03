@@ -64,7 +64,7 @@ class Commentaire{
   {
     if (!is_string($name) || empty($name))
     {
-      $this->erreurs[] = self::NAME_INVALIDE;
+      $this->errors[] = self::NAME_INVALIDE;
     }
     else
     {
@@ -76,7 +76,7 @@ class Commentaire{
   {
     if (!is_string($email) || empty($email))
     {
-      $this->erreurs[] = self::EMAIL_INVALIDE;
+      $this->errors[] = self::EMAIL_INVALIDE;
     }
     else
     {
@@ -88,7 +88,7 @@ class Commentaire{
   {
     if (!is_string($comment) || empty($comment))
     {
-      $this->erreurs[] = self::COMMENT_INVALIDE;
+      $this->errors[] = self::COMMENT_INVALIDE;
     }
     else
     {
@@ -126,6 +126,11 @@ class Commentaire{
   public function pageAcc(){
 
     return $this->pageAcc;
+  }
+
+  public function getErrors(){
+
+    return $this->errors;
   }
 
 

@@ -5,7 +5,11 @@ require_once "..\libs\DBFactory.php";
 require_once "..\models\commentaireManagerPDO.php";
 require_once "..\models\commentaire.php";
 
+session_start();
 
+
+
+$_SESSION["errors"] = [];
 
 
 
@@ -19,11 +23,24 @@ if(!empty($_POST)){
 
 
     $comment = new Commentaire($_POST);
+
    
    if(!$comment->isValid()){
         
+        
+        if($comment->getErrors()[0] == 1){
+
+          $_SESSION["errors"][0] = "Le nom n'est pas correcte";
+        }
+        if($comment->getErrors()[1] == 2){
+
+          
+
+          $_SESSION["errors"][1] = "Le mail n'est pas correcte";
+        }
+
         header("Location:../views/commentaire/commentaire.php");
-        exit("Erreur");
+       
    }
    else{
 
